@@ -5,8 +5,26 @@
 			"referenceName": "sqldatabasedg",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"schema": {
+				"type": "string"
+			},
+			"tabla": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().schema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().schema",
+				"type": "Expression"
+			}
+		}
 	}
 }
