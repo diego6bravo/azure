@@ -1,5 +1,13 @@
 {
 	"name": "adf-devop",
+	"properties": {
+		"globalParameters": {
+			"param": {
+				"type": "string",
+				"value": "50"
+			}
+		}
+	},
 	"location": "eastus",
 	"identity": {
 		"type": "SystemAssigned",
