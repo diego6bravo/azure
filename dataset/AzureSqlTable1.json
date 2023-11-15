@@ -11,6 +11,12 @@
 			},
 			"tabla": {
 				"type": "string"
+			},
+			"urlkeyvault": {
+				"type": "string"
+			},
+			"secretnamekeyvault": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
