@@ -35,7 +35,93 @@
 						]
 					}
 				],
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"activities": [
+						{
+							"name": "Copy data2",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "AzureSqlSource",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "AzureSqlSink",
+									"writeBehavior": "insert",
+									"sqlWriterUseTableLock": false
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "AzureSqlTable1",
+									"type": "DatasetReference",
+									"parameters": {
+										"schema": {
+											"value": "@item().schema",
+											"type": "Expression"
+										},
+										"tabla": {
+											"value": "@item().tabla",
+											"type": "Expression"
+										},
+										"urlkeyvault": {
+											"value": "https://kv-gestorsecretos.vault.azure.net/",
+											"type": "Expression"
+										},
+										"secretnamekeyvault": {
+											"value": "conhostdg",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "AzureSqlTable1",
+									"type": "DatasetReference",
+									"parameters": {
+										"schema": {
+											"value": "@item().schema",
+											"type": "Expression"
+										},
+										"tabla": {
+											"value": "@item().tabla",
+											"type": "Expression"
+										},
+										"urlkeyvault": {
+											"value": "https://kv-gestorsecretos.vault.azure.net/",
+											"type": "Expression"
+										},
+										"secretnamekeyvault": {
+											"value": "conhostdg",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
 			},
 			{
 				"name": "Set variable1",
