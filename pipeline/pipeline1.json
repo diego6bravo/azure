@@ -135,15 +135,18 @@
 				"typeProperties": {
 					"variableName": "tabla",
 					"value": {
-						"value": "@json('[\n    {\"schema\":\"dbo\",\n    \"schema2\":\"dbo\",\n    \"tabla\":\"_\",\n    \"pk_integracion\":\"_\"\n    },]')",
+						"value": "@json('[\n    {\"schema\":\"dbo\",\n    \"schema2\":\"dbo\",\n    \"tabla\":\"dbo_oferta\",\n    \"pk_integracion\":\"Codigo\"\n    },]')",
 						"type": "Expression"
 					}
 				}
 			}
 		],
-		"variables": {
-			"tabla": {
-				"type": "String"
+		"parameters": {
+			"schema": {
+				"type": "string"
+			},
+			"schema2": {
+				"type": "string"
 			}
 		},
 		"folder": {
