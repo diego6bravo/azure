@@ -116,7 +116,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "tabla",
+					"variableName": "table",
 					"value": {
 						"value": "@json('[\n    {\"schema\":\"dbo\",\n    \"schema2\":\"dbo\",\n    \"tabla\":\"dbo_oferta\",\n    \"pk_integracion\":\"Codigo\"\n    },]')",
 						"type": "Expression"
@@ -135,6 +135,9 @@
 		"variables": {
 			"tabla": {
 				"type": "String"
+			},
+			"table": {
+				"type": "Array"
 			}
 		},
 		"folder": {
