@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-devop"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"sqldatabasedg_connectionString": {
+			"value": ""
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://kv-gestorsecretos.vault.azure.net/"
+		},
+		"trigger1_properties_pipeline1_parameters_schema": {
+			"value": "dbo"
+		},
+		"trigger1_properties_pipeline1_parameters_schema2": {
+			"value": "dbo"
+		}
+	}
+}
