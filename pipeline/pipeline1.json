@@ -149,6 +149,11 @@
 				"type": "string"
 			}
 		},
+		"variables": {
+			"table": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "fuentecanal"
 		},
