@@ -150,7 +150,7 @@
 			}
 		},
 		"variables": {
-			"table": {
+			"tabla": {
 				"type": "String"
 			}
 		},
