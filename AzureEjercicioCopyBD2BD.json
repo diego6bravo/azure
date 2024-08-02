@@ -1,0 +1,148 @@
+{
+    "name": "pipeline1",
+    "properties": {
+        "activities": [
+            {
+                "name": "ForEach1",
+                "type": "ForEach",
+                "dependsOn": [
+                    {
+                        "activity": "Set variable1",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "userProperties": [],
+                "typeProperties": {
+                    "items": {
+                        "value": "@variables('tabla')",
+                        "type": "Expression"
+                    },
+                    "isSequential": true,
+                    "activities": [
+                        {
+                            "name": "Copy data2",
+                            "type": "Copy",
+                            "dependsOn": [],
+                            "policy": {
+                                "timeout": "0.12:00:00",
+                                "retry": 0,
+                                "retryIntervalInSeconds": 30,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "userProperties": [],
+                            "typeProperties": {
+                                "source": {
+                                    "type": "AzureSqlSource",
+                                    "queryTimeout": "02:00:00",
+                                    "partitionOption": "None"
+                                },
+                                "sink": {
+                                    "type": "AzureSqlSink",
+                                    "writeBehavior": "insert",
+                                    "sqlWriterUseTableLock": false
+                                },
+                                "enableStaging": false,
+                                "translator": {
+                                    "type": "TabularTranslator",
+                                    "typeConversion": true,
+                                    "typeConversionSettings": {
+                                        "allowDataTruncation": true,
+                                        "treatBooleanAsNumber": false
+                                    }
+                                }
+                            },
+                            "inputs": [
+                                {
+                                    "referenceName": "AzureSqlTable1",
+                                    "type": "DatasetReference",
+                                    "parameters": {
+                                        "schema": {
+                                            "value": "@item().schema",
+                                            "type": "Expression"
+                                        },
+                                        "tabla": {
+                                            "value": "@item().tabla",
+                                            "type": "Expression"
+                                        },
+                                        "urlkeyvault": {
+                                            "value": "https://kv-gestorsecretos.vault.azure.net/",
+                                            "type": "Expression"
+                                        },
+                                        "secretnamekeyvault": {
+                                            "value": "conhostdg",
+                                            "type": "Expression"
+                                        }
+                                    }
+                                }
+                            ],
+                            "outputs": [
+                                {
+                                    "referenceName": "AzureSqlTable1",
+                                    "type": "DatasetReference",
+                                    "parameters": {
+                                        "schema": {
+                                            "value": "@item().schema",
+                                            "type": "Expression"
+                                        },
+                                        "tabla": {
+                                            "value": "@item().tabla",
+                                            "type": "Expression"
+                                        },
+                                        "urlkeyvault": {
+                                            "value": "https://kv-gestorsecretos.vault.azure.net/",
+                                            "type": "Expression"
+                                        },
+                                        "secretnamekeyvault": {
+                                            "value": "conhostdg",
+                                            "type": "Expression"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "Set variable1",
+                "type": "SetVariable",
+                "dependsOn": [],
+                "policy": {
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "variableName": "table",
+                    "value": {
+                        "value": "@json('[\n    {\"schema\":\"dbo\",\n    \"schema2\":\"dbo\",\n    \"tabla\":\"dbo_oferta\",\n    \"pk_integracion\":\"Codigo\"\n    },]')",
+                        "type": "Expression"
+                    }
+                }
+            }
+        ],
+        "parameters": {
+            "schema": {
+                "type": "string"
+            },
+            "schema2": {
+                "type": "string"
+            }
+        },
+        "variables": {
+            "tabla": {
+                "type": "String"
+            },
+            "table": {
+                "type": "Array"
+            }
+        },
+        "folder": {
+            "name": "fuentecanal"
+        },
+        "annotations": []
+    }
+}
